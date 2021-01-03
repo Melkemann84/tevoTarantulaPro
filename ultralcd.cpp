@@ -2561,9 +2561,13 @@ void lcd_quick_feedback(const bool clear_buttons) {
       #endif
       END_MENU();
     }
+     
 
   #endif // AUTO_BED_LEVELING_UBL
-
+      void mks_lcd_bed_leveling(){
+      enqueue_and_echo_commands_P(PSTR("G28"));
+      enqueue_and_echo_commands_P(PSTR("G29"));
+      }
 
   #if ENABLED(LCD_BED_LEVELING) || (HAS_LEVELING && DISABLED(SLIM_LCD_MENUS))
     void _lcd_toggle_bed_leveling() { set_bed_leveling_enabled(!planner.leveling_active); }
@@ -2685,8 +2689,9 @@ void lcd_quick_feedback(const bool clear_buttons) {
     //
     // Level Bed
     //
-    #if ENABLED(AUTO_BED_LEVELING_UBL)
-
+     #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
+      MENU_ITEM(function, MSG_BED_LEVELING, mks_lcd_bed_leveling);
+     #elif ENABLED(AUTO_BED_LEVELING_UBL)
       MENU_ITEM(submenu, MSG_UBL_LEVEL_BED, _lcd_ubl_level_bed);
 
     #elif ENABLED(LCD_BED_LEVELING)
