@@ -12697,7 +12697,7 @@ void process_parsed_command() {
         case 27: gcode_G27(); break;                              // G27: Park Nozzle
       #endif
 
-      case 28: gcode_G28(false); break;                           // G28: Home one or more axes
+      case 28: gcode_G28(false); set_bed_leveling_enabled(true); break;                           // G28: Home one or more axes
 
       #if HAS_LEVELING
         case 29: gcode_G29(); break;                              // G29: Detailed Z probe

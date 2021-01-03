@@ -56,7 +56,7 @@
 // Servos
 //
 #ifdef IS_RAMPS_13
-  #define SERVO0_PIN        7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
+  #define SERVO0_PIN        11  // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
 #else
   #define SERVO0_PIN       11
 #endif
